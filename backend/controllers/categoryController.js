@@ -1,15 +1,14 @@
 const categoryModel = require("../models/categorySchema")
 
-//Define functions for products
+//Define functions for Category
 // ******************
-//create new products
+//create new Category
 const addNewCategory = (req,res)=>{
-    const { img ,title, price } = req.body;
+    const { img ,title} = req.body;
     const author = req.token.userId;
     const newCategory = new categoryModel({
         img,
         title,
-        price,
         author,
     });
   
@@ -32,7 +31,7 @@ const addNewCategory = (req,res)=>{
 
 }
 
-//get All products
+//get All Categories
 const getAllCategory = (req,res)=>{
 
     const userId = req.token.userId;
