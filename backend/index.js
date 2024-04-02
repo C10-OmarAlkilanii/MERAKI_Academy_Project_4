@@ -15,6 +15,8 @@ app.use(express.json());
 const usersRouter = require("./routes/userRouter")
 const roleRouter = require("./routes/roleRouter");
 const productsRouter = require("./routes/productsRouter");
+const categoryRouter = require("./routes/categoryRouter");
+const cartRouter = require("./routes/cartRouter");
 
 
 // Handles any other endpoints 
@@ -24,6 +26,8 @@ app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 app.use("/role",roleRouter);
 app.use("/users",usersRouter);
 app.use("/products",productsRouter);
+app.use("/cart",cartRouter);
+app.use("/category",categoryRouter);
 
 //Server Log
 app.listen(PORT, () => {
