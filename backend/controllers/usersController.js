@@ -1,4 +1,6 @@
 const usersModel = require("../models/usersSchema");
+const cartModel = require("../models/cartSchema")
+//for user login 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -18,11 +20,21 @@ const register = (req, res) => {
   user
     .save()
     .then((result) => {
-      res.status(201).json({
-        success: true,
-        message: `Account Created Successfully`,
-        author: result,
-      });
+
+      //get User id to add products to the carts
+      const cartUser = new cartModel({
+        userId:result.id,
+      })
+
+      cartUser.save().then((resp)=>{
+        res.status(201).json({
+          success: true,
+          message: `Account Created Successfully`,
+          user: result,
+          cartUser: resp,
+        });
+      })
+  
     })
     .catch((err) => {
       if (err.keyPattern) {

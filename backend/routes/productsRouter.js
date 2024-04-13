@@ -9,5 +9,8 @@ const productsRouter = express.Router();
 //Define the function and paths
 productsRouter.post("/addNewProduct",addNewProduct);
 productsRouter.get("/",getAllProducts);
+/* 
+productsRouter.post("/add",);
 
+*/
 module.exports = productsRouter;

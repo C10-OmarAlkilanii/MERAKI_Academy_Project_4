@@ -2,6 +2,7 @@ const cartModel = require("../models/cartSchema")
 
 //Define functions for Carts
 // ******************
+
 //Add new produc
 const addNewCart = (req,res)=>{
     const { img ,title,price} = req.body;
@@ -64,4 +65,60 @@ const getAllCartProducts = (req,res)=>{
 }
 
 
-module.exports = {addNewCart,getAllCartProducts};
+//This function returns products by author
+const getProductByAuthor = (req, res) => {
+  let authorId = req.query.author;
+
+  cartModel
+    .findMany({ author: authorId })
+    .then((products) => {
+      if (!products.length) {
+        return res.status(404).json({
+          success: false,
+          message: `The author: ${authorId} has no products`,
+        });
+      }
+      res.status(200).json({
+        success: true,
+        message: `All the products for the author: ${authorId}`,
+        products: products,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err.message,
+      });
+    });
+};
+
+/* const getArticlesByAuthor = (req, res) => {
+  let authorId = req.query.author;
+
+  articlesModel
+    .findMany({ author: authorId })
+    .then((articles) => {
+      if (!articles.length) {
+        return res.status(404).json({
+          success: false,
+          message: `The author: ${authorId} has no articles`,
+        });
+      }
+      res.status(200).json({
+        success: true,
+        message: `All the articles for the author: ${authorId}`,
+        articles: articles,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err.message,
+      });
+    });
+};
+  */
+
+module.exports = {addNewCart,getAllCartProducts,getProductByAuthor};

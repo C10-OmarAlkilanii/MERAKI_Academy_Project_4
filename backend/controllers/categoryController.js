@@ -5,11 +5,10 @@ const categoryModel = require("../models/categorySchema")
 //create new Category
 const addNewCategory = (req,res)=>{
     const { img ,title} = req.body;
-    const author = req.token.userId;
     const newCategory = new categoryModel({
         img,
         title,
-        author,
+        
     });
   
     newCategory
@@ -20,6 +19,8 @@ const addNewCategory = (req,res)=>{
           message: `Category created`,
           category: category,
         });
+
+        
       })
       .catch((err) => {
         res.status(500).json({
@@ -31,10 +32,12 @@ const addNewCategory = (req,res)=>{
 
 }
 
+
 //get All Categories
 const getAllCategory = (req,res)=>{
 
     const userId = req.token.userId;
+    
   categoryModel
     .find()
     .exec()

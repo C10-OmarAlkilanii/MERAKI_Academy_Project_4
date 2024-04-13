@@ -4,13 +4,13 @@ const productsModel = require("../models/productsSchema")
 // ******************
 //create new products
 const addNewProduct = (req,res)=>{
-    const { img ,title, description } = req.body;
-    const author = req.token.userId;
+    const { img ,title } = req.body;
+    const category = req.token.userId;
+    //Category params
     const newProduct = new productsModel({
         img,
         title,
-        description,
-        author,
+        category,
     });
   
     newProduct
