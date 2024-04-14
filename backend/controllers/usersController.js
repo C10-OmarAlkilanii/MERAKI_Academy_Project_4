@@ -104,7 +104,7 @@ const login = (req, res) => {
 };
 
 //Get user bi ID
-const getUserByID = (req,res)=>{
+/* const getUserByID = (req,res)=>{
   const {id} = req.params;
   usersModel.findById(id,"-__v").populate("role","-__v -__id").then((result)=>{
     console.log("user ID",result);
@@ -121,7 +121,7 @@ const getUserByID = (req,res)=>{
       })
     }
   })
-}
+} */
 
 module.exports = {
   register,

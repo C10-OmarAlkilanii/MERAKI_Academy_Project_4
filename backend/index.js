@@ -25,7 +25,7 @@ app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 //Routes MiddleWare
 app.use("/role",roleRouter);
 app.use("/users",usersRouter);
-app.use("/products",productsRouter);
+app.use("/product",productsRouter);
 app.use("/cart",cartRouter);
 app.use("/category",categoryRouter);
 
