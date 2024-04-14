@@ -103,6 +103,26 @@ const login = (req, res) => {
     });
 };
 
+//Get user bi ID
+const getUserByID = (req,res)=>{
+  const {id} = req.params;
+  usersModel.findById(id,"-__v").populate("role","-__v -__id").then((result)=>{
+    console.log("user ID",result);
+    if(!result){
+      res.status(404).json({
+        success:false,
+        message:"User not found",
+      })
+    }else{
+      res.status(200).json({
+        success:true,
+        message: `user id is :${id}`,
+        user: result,
+      })
+    }
+  })
+}
+
 module.exports = {
   register,
   login,

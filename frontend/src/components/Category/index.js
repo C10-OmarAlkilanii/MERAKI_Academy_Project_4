@@ -1,22 +1,33 @@
-import React from 'react'
-
-/* 
-Categories
--Meat{https://cdnprod.mafretailproxy.com/assets/images/4_Meat_and_Poultry_5eda2f5b04.png}
-
--Electronic{https://cdnprod.mafretailproxy.com/assets/images/19_Large_Appliances_2dd867ed28.png}
-
--Baverages{https://cdnprod.mafretailproxy.com/assets/images/coca_cola_circle_c6ccafa037.gif}
-
--Bustan fresh {https://cdnprod.mafretailproxy.com/assets/images/Bustan_Category_Tile_5b54d51646.gif}
-
-*/
+import React, { useContext, useEffect, useState } from 'react'
+import axios from 'axios';
+import { userContext } from '../../App';
 
 const Category = () => {
 
+    //useContext Area
+    const {isLogin , setIsLogin,token,setToken} = useContext(userContext)
+    const [categoryList,setCategoryList]=useState(null);
+
+    
+  useEffect(()=>{
+    axios.get("http://localhost:5000/category",{headers: {
+Authorization: `Bearer ${token}`}}).then((result)=>{
+    setCategoryList(result.data.category.map((category,index)=>{
+        return <div key={index} style={{padding:"10px",border:"solid", color:"blue" ,gap:"30px",margin:"50px"}}>
+        <p>{category.title} </p>
+        <img src={`${category.img}`}/>
+
+      </div>
+    }));
+
+    }).catch((err)=>{
+      console.log(err.message);
+    });
+  },[])
+
   return (
     <div>
-     
+      {categoryList}
     </div>
   )
 }

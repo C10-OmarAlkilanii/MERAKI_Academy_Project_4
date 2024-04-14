@@ -7,6 +7,8 @@ import Com404 from "./components/Com404"
 import Login from './components/Login';
 import Dashbord from "./components/Dashbord"
 import Navbar from './components/Navbar';
+import 'bootstrap/dist/css/bootstrap.css';
+
 export const userContext = createContext ()
 
 const App = () => {

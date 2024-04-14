@@ -17,8 +17,8 @@ export default function Navbar() {
   return (
     <div>
       {isLogin? <>
-        <Link to="/" >Dashbord || </Link>
-        <Link to="/articles">Add New Article || </Link>
+        <Link to="/category" >Dashbord || </Link>
+        <Link to="/cart">Carts || </Link>
         <Link to="/users/login" onClick={logoutFun}>Logout</Link>
         </> : <>
         <Link to={"/users/register"} >Register || </Link>

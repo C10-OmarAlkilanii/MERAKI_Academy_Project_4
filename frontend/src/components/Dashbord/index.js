@@ -3,8 +3,8 @@ import Category from '../Category'
 
 const Dashbord = () => {
   return (
-    <div>Dashbord
-      <Category/>
+    <div>
+      <Category />
     </div>
   )
 }
