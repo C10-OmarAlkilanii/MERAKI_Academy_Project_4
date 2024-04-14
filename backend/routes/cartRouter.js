@@ -1,13 +1,13 @@
 const express = require("express");
-const { addNewCart, getAllCartProducts,getProductByAuthor} = require("../controllers/cartController");
+const { addProductToCart } = require("../controllers/cartController");
 //get functions from controller
 
 //Define Router 
 const cartRouter = express.Router();
+const authentication = require("../middleware/authintication")
 
 //Define the function and paths
-cartRouter.post("/addNewProductToCart",addNewCart);
-cartRouter.get("/",getAllCartProducts);
-cartRouter.get("/search/:id",getProductByAuthor);
+cartRouter.put("/addNewProductToCart/:user",authentication,addProductToCart);
+
 
 module.exports = cartRouter;
