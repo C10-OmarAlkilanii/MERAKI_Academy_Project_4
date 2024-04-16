@@ -6,8 +6,12 @@ import Register from "./components/Register"
 import Com404 from "./components/Com404"
 import Login from './components/Login';
 import Dashbord from "./components/Dashbord"
+import AddProduct from './components/AddProduct/meat';
 import Navbar from './components/Navbar';
 import 'bootstrap/dist/css/bootstrap.css';
+import Baverage from './components/AddProduct/Baverage';
+import Electronic from './components/AddProduct/Electronic';
+import BustanFresh from './components/AddProduct/BustanFresh';
 
 export const userContext = createContext ()
 
@@ -21,18 +25,31 @@ const App = () => {
    <div className="App">
     
      {/* Nav Here from login  */}
+      <div className='header'>
      <Navbar />
-        <br/>
+     </div>
+        <div className='pagebody'>
+          <Routes>
+            <Route path = "/" element = {<Dashbord />}/>
 
-      <Routes>
-      <Route path = "/" element = {<Dashbord />}/>
+            <Route path = "/category" element = {<Dashbord />}/>
 
-        <Route path="/users/register" element={<Register/>}/>
-        
-        <Route path = "/users/login" element= {<Login />}/>
+            <Route path ="/product/Meat" element={<AddProduct/>} />
+            <Route path ="/product/Baverage" element={<Baverage/>} />
+            <Route path ="/product/Electronic" element={<Electronic/>} />
+            <Route path ="/product/BustanFresh" element={<BustanFresh/>} />
 
-        <Route path='*' element={<Com404/>}/>
-      </Routes>
+            <Route path="/users/register" element={<Register/>}/>
+            
+            <Route path = "/users/login" element= {<Login />}/>
+
+            <Route path='*' element={<Com404/>}/>
+          </Routes>
+        </div>
+
+      <div className='footer'>
+        footer
+      </div>
     </div>
     </userContext.Provider>
   )

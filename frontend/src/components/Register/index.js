@@ -42,7 +42,7 @@ export const Register = () => {
 
 
   return (
-    <div>
+    <div className='register-box'>
         {/* inpurts and button */}
 
         <input type='text' placeholder='First Name' onChange={setfName}/><br/>
