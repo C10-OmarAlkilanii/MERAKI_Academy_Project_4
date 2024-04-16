@@ -18,8 +18,9 @@ const AddProduct = () => {
                     <div className="col-md-4 mb-4" key={index}>
                         <div className="card">
                             <img src={product.img} className="card-img-top" alt={product.title} />
-                            <div className="card-body">
+                            <div className="card-body d-flex justify-content-between align-items-center">
                                 <h5 className="card-title">{product.title}</h5>
+                                <button className="btn btn-primary">Add to Cart</button>
                             </div>
                         </div>
                     </div>

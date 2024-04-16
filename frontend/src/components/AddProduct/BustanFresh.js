@@ -7,34 +7,28 @@ const BustanFresh = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/product/BustanFresh',{
-          headers: {
-              Authorization: `Bearer ${token}`
-          }
-      })
-            .then((result) => {                
-                  setProducts(result.data.category.map((product, index) => {
-                    return (
-                            <div style={{
-                                padding: "10px",
-                                border: "solid",
-                                color: "blue",
-                                gap: "30px",
-                                margin: "50px",
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "center" 
-                            }}>
-                                <p>{product.title}</p>
-                                <img src={product.img} style={{ maxWidth: "100%", height: "auto" }} /> 
+        axios.get('http://localhost:5000/product/BustanFresh', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then((result) => {
+            setProducts(result.data.category.map((product, index) => {
+                return (
+                    <div className="col-md-4 mb-4" key={index}>
+                        <div className="card">
+                            <img src={product.img} className="card-img-top" alt={product.title} />
+                            <div className="card-body">
+                                <h5 className="card-title">{product.title}</h5>
                             </div>
-                    );
-                
-              }));
-            })
-            .catch((err) => {
-               console.log(err.message);
-            });
+                        </div>
+                    </div>
+                );
+            }));
+        })
+        .catch((err) => {
+            console.log(err.message);
+        });
     }, []);
 
     return (

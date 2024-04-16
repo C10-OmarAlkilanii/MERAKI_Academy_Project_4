@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Baverage from './components/AddProduct/Baverage';
 import Electronic from './components/AddProduct/Electronic';
 import BustanFresh from './components/AddProduct/BustanFresh';
+import Addcart from './components/Addcart';
 
 export const userContext = createContext();
 
@@ -25,6 +26,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Dashbord />} />
             <Route path="/category" element={<Dashbord />} />
+            <Route path='/cart' element={<Addcart/>} />
             <Route path="/product/Meat" element={<AddProduct />} />
             <Route path="/product/Baverage" element={<Baverage />} />
             <Route path="/product/Electronic" element={<Electronic />} />
