@@ -15,21 +15,16 @@ const Category = () => {
         }).then((result) => {
             setCategoryList(result.data.category.map((category, index) => {
                 return (
-                    <Link to={`/product/${category.title}`} key={index}>
-                        <div style={{
-                            padding: "10px",
-                            border: "solid",
-                            color: "blue",
-                            gap: "30px",
-                            margin: "50px",
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center" 
-                        }}>
-                            <p>{category.title}</p>
-                            <img src={category.img} style={{ maxWidth: "100%", height: "auto" }} /> 
-                        </div>
-                    </Link>
+                    <div className="col-md-4 mb-4" key={index}>
+                        <Link to={`/product/${category.title}`} className="text-decoration-none">
+                            <div className="card">
+                                <img src={category.img} className="card-img-top" alt={category.title} />
+                                <div className="card-body">
+                                    <h5 className="card-title">{category.title}</h5>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
                 );
             }));
         }).catch((err) => {
@@ -38,8 +33,10 @@ const Category = () => {
     }, []);
 
     return (
-        <div>
-            {categoryList}
+        <div className="container">
+            <div className="row">
+                {categoryList}
+            </div>
         </div>
     );
 }
